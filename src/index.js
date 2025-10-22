@@ -13,14 +13,15 @@ import swaggerUi from 'swagger-ui-express';
 import path from 'path';
 import { swaggerSpec } from './swagger.js';
 import { startBookingCleanupJob } from './cleanupBookings.js';
-
+import cors from 'cors';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 3022;
+const port = 3022; //process.env.PORT || 3022;
 
+app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 app.use(authRouter);
